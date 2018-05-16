@@ -52,8 +52,16 @@ class KerentananFisik extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+   
     public function getKabupatens()
     {
         return $this->hasMany(Kabupaten::className(), ['id_kerenfis' => 'id_kerenfis']);
     }
+
+    // public function getKabupatens()
+    // {
+    //     $kabupaten = Kabupaten::find()->where(['id_kerenfis'=>$this->id_kabupaten])->one();
+        
+    // }
 }
+  

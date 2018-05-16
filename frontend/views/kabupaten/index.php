@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kabupatens';
+$this->title = 'PRB | Jawa Timur';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kabupaten-index">

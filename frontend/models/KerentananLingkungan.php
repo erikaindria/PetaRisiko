@@ -12,7 +12,6 @@ use Yii;
  * @property string $hutan_alam
  * @property string $hutan_bakau
  * @property string $semak_belukar
- * @property string $rawa
  *
  * @property Kabupaten[] $kabupatens
  */
@@ -34,7 +33,7 @@ class KerentananLingkungan extends \yii\db\ActiveRecord
         return [
             [['id_kerenling'], 'required'],
             [['id_kerenling'], 'integer'],
-            [['hutan_lindung', 'hutan_alam', 'hutan_bakau', 'semak_belukar', 'rawa'], 'string', 'max' => 30],
+            [['hutan_lindung', 'hutan_alam', 'hutan_bakau', 'semak_belukar'], 'string', 'max' => 30],
         ];
     }
 
@@ -49,7 +48,6 @@ class KerentananLingkungan extends \yii\db\ActiveRecord
             'hutan_alam' => 'Hutan Alam',
             'hutan_bakau' => 'Hutan Bakau',
             'semak_belukar' => 'Semak Belukar',
-            'rawa' => 'Rawa',
         ];
     }
 

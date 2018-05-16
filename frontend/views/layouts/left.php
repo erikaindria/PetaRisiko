@@ -25,7 +25,7 @@
                     ['label' => 'Dashboard', 'icon' => 'dashboard', 'url' => ['/']],
                     [
                         'label' => 'Data', 
-                        'icon' => 'share', 
+                        'icon' => 'book', 
                         'url' => '#',
                         'items' => [
                             ['label' => 'Daftar Bencana', 'icon' => 'circle-o', 'url' => ['/bencana'],],
@@ -40,12 +40,12 @@
                                     ['label' => 'Kerentanan Sosial', 'icon' => 'circle-o', 'url' => ['/kerentanan-sosial'],],
                                 ],
                             ],
-                            ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/indeks-kapasitas'],],
                         ],
                     ],
                     [
                         'label' => 'Process', 
-                        'icon' => 'share', 
+                        'icon' => 'file', 
                         'url' => '#',
                         'items' => [
                             ['label' => 'Hazard', 'icon' => 'circle-o', 'url' => ['/'],],
@@ -54,11 +54,8 @@
                             ['label' => 'Nilai Risiko Bencana', 'icon' => 'circle-o', 'url' => ['/'],],
                         ],
                     ],
-                    ['label' => 'AHP', 'icon' => 'circle-o', 'url' => ['/']],
-                    ['label' => 'PRB - Map', 'icon' => 'circle-o', 'url' => ['/']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'AHP', 'icon' => 'calculator', 'url' => ['/']],
+                    ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/']],
                 ],
             ]
         ) ?>

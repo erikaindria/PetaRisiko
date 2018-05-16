@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'rasio_jenis_kelamin',
             'rasio_kemiskinan',
             'rasio_orang_cacat',
-            // 'rasio_kelompok_umur',
+            'rasio_kelompok_umur',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

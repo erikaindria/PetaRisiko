@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'hutan_alam',
             'hutan_bakau',
             'semak_belukar',
-            // 'rawa',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
