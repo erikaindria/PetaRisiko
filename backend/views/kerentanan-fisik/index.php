@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_kerenfis',
             'fasilitas_umum',
-            'fasilitas_khusus',
+            'fasilitas_kritis',
             'rumah',
 
             ['class' => 'yii\grid\ActionColumn'],

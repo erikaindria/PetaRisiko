@@ -2,9 +2,12 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\models\KerentananSosial;
+use yii\models\Kabupaten;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
 
 $this->title = 'PRB | Jawa Timur';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,21 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Kerentanan Sosial', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_kerensos',
-            'kepadatan_penduduk',
-            'rasio_jenis_kelamin',
-            'rasio_kemiskinan',
-            'rasio_orang_cacat',
-            'rasio_kelompok_umur',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -64,11 +53,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  { ?>
+                        <?php foreach ($query as $res) { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $res['kepadatan_penduduk'] ?></td>
+                            <td><?= $res['rasio_jenis_kelamin'] ?></td>
+                            <td><?= $res['rasio_kemiskinan'] ?></td>
+                            <td><?= $res['rasio_orang_cacat'] ?></td>
+                            <td><?= $res['rasio_kelompok_umur'] ?></td>
                         </tr>
                         <?php } ?>                    
                     </tbody>
@@ -87,3 +79,4 @@ $this->params['breadcrumbs'][] = $this->title;
         </div><!-- /.box -->
     </section>
 </div>
+

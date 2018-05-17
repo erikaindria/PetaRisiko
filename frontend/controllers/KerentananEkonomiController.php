@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use frontend\models\Kabupaten;
 /**
  * KerentananEkonomiController implements the CRUD actions for KerentananEkonomi model.
  */
@@ -35,12 +36,23 @@ class KerentananEkonomiController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => KerentananEkonomi::find(),
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => KerentananEkonomi::find(),
+        // ]);
+
+        // return $this->render('index', [
+        //     'dataProvider' => $dataProvider,
+        // ]);
+        $query = (new \yii\db\Query())
+        ->select(['kabupaten.nama_kabupaten', 'kerentanan_ekonomi.lahan_produktif', 'kerentanan_ekonomi.PDRB']) 
+        ->from('kabupaten')
+        ->join('JOIN', 'kerentanan_ekonomi', 'kabupaten.id_kerenek = kerentanan_ekonomi.id_kerenek');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

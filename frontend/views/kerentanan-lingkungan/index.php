@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\models\KerentananLingkungan;
+use yii\models\Kabupaten;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,20 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Kerentanan Lingkungan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_kerenling',
-            'hutan_lindung',
-            'hutan_alam',
-            'hutan_bakau',
-            'semak_belukar',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -62,11 +50,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  { ?>
+                        <?php foreach ($query as $res)  { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $res['hutan_lindung'] ?></td>
+                            <td><?= $res['hutan_alam'] ?></td>
+                            <td><?= $res['hutan_bakau'] ?></td>
+                            <td><?= $res['semak_belukar'] ?></td>
                         </tr>
                         <?php } ?>                    
                     </tbody>

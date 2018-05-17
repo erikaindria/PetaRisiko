@@ -30,7 +30,7 @@ class KerentananFisik extends \yii\db\ActiveRecord
         return [
             [['id_kerenfis'], 'required'],
             [['id_kerenfis'], 'integer'],
-            [['fasilitas_umum', 'fasilitas_khusus', 'rumah'], 'string', 'max' => 30],
+            [['fasilitas_umum', 'fasilitas_kritis', 'rumah'], 'string', 'max' => 30],
         ];
     }
 
@@ -42,7 +42,7 @@ class KerentananFisik extends \yii\db\ActiveRecord
         return [
             'id_kerenfis' => 'Id Kerenfis',
             'fasilitas_umum' => 'Fasilitas Umum',
-            'fasilitas_khusus' => 'Fasilitas Khusus',
+            'fasilitas_kritis' => 'Fasilitas Kritis',
             'rumah' => 'Rumah',
         ];
     }

@@ -16,25 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Kerentanan Fisik', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'id_kerenfis',
-            // [
-            //     'label'=>'Nama Kabupaten',
-            //     'value'=> function($model){
-            //         return $model->getKabupatens();
-            //     }
-            // ],
-            'fasilitas_umum',
-            'fasilitas_khusus',
-            'rumah',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -66,14 +48,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php { ?>
+                        <?php foreach ($query as $res) { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $res['fasilitas_umum'] ?></td>
+                            <td><?= $res['fasilitas_kritis'] ?></td>
+                            <td><?= $res['rumah'] ?></td>
                         </tr>
-                        <?php } ?>                     
+                        <?php } ?>                      
                     </tbody>
                     <tfoot>
                         <tr>

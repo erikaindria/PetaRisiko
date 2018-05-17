@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fasilitas_umum')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fasilitas_khusus')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'fasilitas_kritis')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'rumah')->textInput(['maxlength' => true]) ?>
 

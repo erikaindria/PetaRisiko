@@ -16,18 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Kerentanan Ekonomi', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_kerenek',
-            'lahan_produktif',
-            'PDRB',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+   
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -58,13 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  { ?>
+                        <?php foreach ($query as $res) { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $res['lahan_produktif'] ?></td>
+                            <td><?= $res['PDRB'] ?></td>
                         </tr>
-                        <?php } ?>                    
+                        <?php } ?>                     
                     </tbody>
                     <tfoot>
                         <tr>
