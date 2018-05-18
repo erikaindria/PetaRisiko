@@ -9,15 +9,8 @@ use yii\models\Kabupaten;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'PRB | Jawa Timur';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-lingkungan-index">
-
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
-
-    <p>
-        <?= Html::a('Create Kerentanan Lingkungan', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">

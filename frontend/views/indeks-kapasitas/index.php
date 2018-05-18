@@ -7,26 +7,8 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'PRB | Jawa Timur';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="indeks-kapasitas-index">
-
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
-
-    <p>
-        <?= Html::a('Create Indeks Kapasitas', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_indeks_kapasitas',
-            'skor',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -55,11 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  { ?>
+                        <?php foreach ($query as $res) { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td style="width: 60%;"><?= $res['nama_kabupaten'] ?></td>
+                            <td style="width: 40%;"><?= $res['skor'] ?></td>
                         </tr>
                         <?php } ?>                    
                     </tbody>

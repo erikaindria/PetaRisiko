@@ -33,6 +33,7 @@ class Bencana extends \yii\db\ActiveRecord
             [['id_bencana', 'id_kabupaten'], 'integer'],
             [['tanggal_kejadian', 'waktu_kejadian'], 'safe'],
             [['alamat_kejadian'], 'string', 'max' => 300],
+            [['id_kabupaten'], 'exist', 'skipOnError' => true, 'targetClass' => Kabupaten::className(), 'targetAttribute' => ['id_kabupaten' => 'id_kabupaten']],
         ];
     }
 
@@ -48,5 +49,13 @@ class Bencana extends \yii\db\ActiveRecord
             'tanggal_kejadian' => 'Tanggal Kejadian',
             'waktu_kejadian' => 'Waktu Kejadian',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getKabupatens()
+    {
+        return $this->hasMany(Kabupaten::className(), ['id_kabupaten' => 'id_kabupaten']);
     }
 }

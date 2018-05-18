@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use frontend\models\Kabupaten;
 /**
  * IndeksKapasitasController implements the CRUD actions for IndeksKapasitas model.
  */
@@ -35,12 +36,24 @@ class IndeksKapasitasController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => IndeksKapasitas::find(),
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => IndeksKapasitas::find(),
+        // ]);
+
+        // return $this->render('index', [
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        $query = (new \yii\db\Query())
+        ->select(['kabupaten.nama_kabupaten', 'indeks_kapasitas.skor']) 
+        ->from('kabupaten')
+        ->join('JOIN', 'indeks_kapasitas', 'kabupaten.id_indeks_kapasitas = indeks_kapasitas.id_indeks_kapasitas');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

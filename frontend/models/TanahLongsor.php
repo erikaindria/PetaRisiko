@@ -32,6 +32,7 @@ class TanahLongsor extends \yii\db\ActiveRecord
             [['id_tanah_longsor'], 'required'],
             [['id_tanah_longsor', 'id_bencana'], 'integer'],
             [['kerentanan_gerakan_tanah', 'longtitude', 'latitude'], 'string', 'max' => 30],
+            [['id_bencana'], 'exist', 'skipOnError' => true, 'targetClass' => Bencana::className(), 'targetAttribute' => ['id_bencana' => 'id_bencana']],
         ];
     }
 
@@ -47,5 +48,15 @@ class TanahLongsor extends \yii\db\ActiveRecord
             'longtitude' => 'Longtitude',
             'latitude' => 'Latitude',
         ];
+    }
+
+    // public function getKabupatens()
+    // {
+    //     return $this->hasMany(Kabupaten::className(), ['id_kabupaten' => 'id_kabupaten']);
+    // }
+
+    public function getBencana()
+    {
+        return $this->hasMany(Bencana::className(), ['id_bencana' => 'id_bencana']);
     }
 }

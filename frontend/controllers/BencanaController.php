@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use frontend\models\Kabupaten;
 /**
  * BencanaController implements the CRUD actions for Bencana model.
  */
@@ -35,12 +36,24 @@ class BencanaController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Bencana::find(),
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => Bencana::find(),
+        // ]);
+
+        // return $this->render('index', [
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        $query = (new \yii\db\Query())
+        ->select(['kabupaten.nama_kabupaten', 'bencana.alamat_kejadian', 'bencana.tanggal_kejadian', 'bencana.waktu_kejadian']) 
+        ->from('kabupaten')
+        ->join('JOIN', 'bencana', 'bencana.id_kabupaten = kabupaten.id_kabupaten');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

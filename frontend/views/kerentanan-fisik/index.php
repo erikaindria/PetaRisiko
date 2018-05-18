@@ -7,16 +7,9 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'PRB | Jawa Timur';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="kerentanan-fisik-index">
-
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
-
-    <p>
-        <?= Html::a('Create Kerentanan Fisik', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    
 
     <!-- Content Header (Page header) -->
     <section class="content-header">

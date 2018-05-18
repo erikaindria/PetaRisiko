@@ -6,31 +6,10 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Peta Risiko';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'PRB | Jawa Timur';
+
 ?>
 <div class="bencana-index">
-
-   <!--  <h1><?= Html::encode($this->title) ?></h1> -->
-
-    <p>
-        <?= Html::a('Create Bencana', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_bencana',
-            'id_kabupaten',
-            // 'nama_kabupaten', //ini ditambahin sendiri ya
-            'alamat_kejadian',
-            'tanggal_kejadian',
-            'waktu_kejadian',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -61,12 +40,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  { ?>
+                        <?php foreach ($query as $res)  { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $res['alamat_kejadian'] ?></td>
+                            <td><?= $res['tanggal_kejadian'] ?></td>
+                            <td><?= $res['waktu_kejadian'] ?></td>
                         </tr>
                         <?php } ?>                    
                     </tbody>

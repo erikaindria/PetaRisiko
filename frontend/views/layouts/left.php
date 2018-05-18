@@ -48,7 +48,7 @@
                         'icon' => 'file', 
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Hazard', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'Hazard', 'icon' => 'circle-o', 'url' => ['/tanah-longsor'],],
                             ['label' => 'Kerentanan', 'icon' => 'circle-o', 'url' => ['/'],],
                             ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/'],],
                             ['label' => 'Nilai Risiko Bencana', 'icon' => 'circle-o', 'url' => ['/'],],

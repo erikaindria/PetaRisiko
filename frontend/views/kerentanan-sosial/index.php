@@ -10,16 +10,8 @@ use yii\models\Kabupaten;
 
 
 $this->title = 'PRB | Jawa Timur';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-sosial-index">
-
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
-
-    <p>
-        <?= Html::a('Create Kerentanan Sosial', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    
 
     <!-- Content Header (Page header) -->
     <section class="content-header">

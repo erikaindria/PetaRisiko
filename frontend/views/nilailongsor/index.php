@@ -7,19 +7,20 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'PRB | Jawa Timur';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-ekonomi-index">
+ 
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            KERENTANAN EKONOMI
+            Nilai Tanah Longsor
             <small></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Data</a></li>
-            <li class="active">Kerentanan</li>
-            <li class="active">Kerentanan Ekonomi</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Process</a></li>
+            <li class="active">Hazard</li>
         </ol>
     </section>
 
@@ -33,25 +34,27 @@ $this->title = 'PRB | Jawa Timur';
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th>Tanggal Kejadian</th>
                             <th>Nama Kabupaten</th>
-                            <th>Lahan Produktif</th>
-                            <th>PDRB</th>                        
+                            <th>Latitude</th>
+                            <th>Longtitude</th>
+                            <th>Kerentanan Gerakan Tanah</th>            
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($query as $res) { ?>
+                        <?php  { ?>
                         <tr>
-                            <td><?= $res['nama_kabupaten'] ?></td>
-                            <td><?= $res['lahan_produktif'] ?></td>
-                            <td><?= $res['PDRB'] ?></td>
+                            
                         </tr>
                         <?php } ?>                     
                     </tbody>
                     <tfoot>
                         <tr>
+                            <th>Tanggal Kejadian</th>
                             <th>Nama Kabupaten</th>
-                            <th>Lahan Produktif</th>
-                            <th>PDRB</th>    
+                            <th>Latitude</th>
+                            <th>Longtitude</th>
+                            <th>Kerentanan Gerakan Tanah</th>   
                         </tr>
                     </tfoot>
                 </table>

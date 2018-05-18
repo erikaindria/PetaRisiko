@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use yii\helpers\ArrayHelper;
+use frontend\models\Kabupaten;
+use frontend\models\Bencana;
 /**
  * TanahLongsorController implements the CRUD actions for TanahLongsor model.
  */
@@ -35,12 +38,25 @@ class TanahLongsorController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => TanahLongsor::find(),
-        ]);
+        // $dataProvider = new ActiveDataProvider([
+        //     'query' => TanahLongsor::find(),
+        // ]);
+
+        // return $this->render('index', [
+        //     'dataProvider' => $dataProvider,
+        // ]);
+
+        $query = (new \yii\db\Query())
+        ->select(['bencana.tanggal_kejadian', 'kabupaten.nama_kabupaten', 'tanah_longsor.latitude', 'tanah_longsor.longtitude', 'tanah_longsor.kerentanan_gerakan_tanah']) 
+        ->from('bencana')
+        ->join('LEFT JOIN', 'tanah_longsor', 'bencana.id_bencana = tanah_longsor.id_bencana')
+        ->join('LEFT JOIN', 'kabupaten', 'kabupaten.id_kabupaten = bencana.id_kabupaten');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 
