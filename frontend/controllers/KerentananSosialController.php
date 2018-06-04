@@ -38,13 +38,6 @@ class KerentananSosialController extends Controller
     
     public function actionIndex()
     {
-        // $dataProvider = new ActiveDataProvider([
-        //     'query' => KerentananSosial::find(),
-        // ]);
-
-        // return $this->render('index', [
-        //     'dataProvider' => $dataProvider,
-        // ]);
        
        $query = (new \yii\db\Query())
         ->select(['kabupaten.nama_kabupaten', 'kerentanan_sosial.kepadatan_penduduk', 'kerentanan_sosial.rasio_jenis_kelamin', 'kerentanan_sosial.rasio_kemiskinan', 'kerentanan_sosial.rasio_orang_cacat', 'kerentanan_sosial.rasio_kelompok_umur']) 

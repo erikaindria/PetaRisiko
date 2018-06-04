@@ -36,14 +36,6 @@ class IndeksKapasitasController extends Controller
      */
     public function actionIndex()
     {
-        // $dataProvider = new ActiveDataProvider([
-        //     'query' => IndeksKapasitas::find(),
-        // ]);
-
-        // return $this->render('index', [
-        //     'dataProvider' => $dataProvider,
-        // ]);
-
         $query = (new \yii\db\Query())
         ->select(['kabupaten.nama_kabupaten', 'indeks_kapasitas.skor']) 
         ->from('kabupaten')
