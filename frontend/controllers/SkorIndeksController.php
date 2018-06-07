@@ -53,7 +53,7 @@ class SkorIndeksController extends Controller
         for($i=0; $i < count($nilaiindeks); $i++){
             if ($nilaiindeks[$i]['skor'] < 0.33) 
                 $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.33);
-            else if($nilaiindeks[$i]['skor'] >= 0.33 && $nilaiindeks[$i]['skor'] <= 0.66)
+            elseif($nilaiindeks[$i]['skor'] >= 0.33 && $nilaiindeks[$i]['skor'] <= 0.66)
                 $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.66) *1;
             else
                 $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / $nilaiindeks[$i]['skor']);

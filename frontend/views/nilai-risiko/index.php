@@ -7,60 +7,53 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'PRB | Jawa Timur';
-
 ?>
-<div class="kerentanan-fisik-index">
+<div class="skor-indeks-index">
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            KERENTANAN FISIK
+            NILAI RISIKO BENCANA
             <small></small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Data</a></li>
-            <li class="active">Kerentanan</li>
-            <li class="active">Kerentanan Fisik</li>
+            <li class="active">Nilai Risiko</li>
         </ol>
     </section>
 
     <section class="content">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Jawa Timur</h3>
+                <h3 class="box-title">Tanah Longsor</h3>
             </div><!-- /.box-header -->
                     
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Nama Kabupaten</th>
-                            <th>Fasilitas Umum</th>
-                            <th>Fasilitas Kritis</th>
-                            <th>Rumah</th>
+                            <th>Tanggal</th>
+                            <th>Nama Kabupaten</th>  
+                            <th>Skor</th>
+                            <th>Status</th>                      
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($query as $res) { ?>
                         <tr>
-                            <td><?= $res['nama_kabupaten'] ?></td>
-                            <td><?= $res['fasilitas_umum'] ?></td>
-                            <td><?= $res['fasilitas_kritis'] ?></td>
-                            <td><?= $res['rumah'] ?></td>
-                        </tr>
-                        <?php } ?>                      
+                            <td></td>
+                            <td></td>
+                        </tr>                    
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Nama Kabupaten</th>
-                            <th>Fasilitas Umum</th>
-                            <th>Fasilitas Kritis</th>
-                            <th>Rumah</th>
+                            <th>Tanggal</th>
+                            <th>Nama Kabupaten</th>  
+                            <th>Skor</th>
+                            <th>Status</th>    
                         </tr>
                     </tfoot>
                 </table>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     </section>
-
 </div>

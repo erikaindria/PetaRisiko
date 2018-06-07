@@ -34,10 +34,10 @@
                                 'icon' => 'circle-o', 
                                 'url' => '#',
                                 'items' => [
+                                    ['label' => 'Kerentanan Sosial', 'icon' => 'circle-o', 'url' => ['/kerentanan-sosial'],],
                                     ['label' => 'Kerentanan Ekonomi', 'icon' => 'circle-o', 'url' => ['/kerentanan-ekonomi'],],
                                     ['label' => 'Kerentanan Fisik', 'icon' => 'circle-o', 'url' => ['/kerentanan-fisik'],],
                                     ['label' => 'Kerentanan Lingkungan', 'icon' => 'circle-o', 'url' => ['/kerentanan-lingkungan'],],
-                                    ['label' => 'Kerentanan Sosial', 'icon' => 'circle-o', 'url' => ['/kerentanan-sosial'],],
                                 ],
                             ],
                             ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/indeks-kapasitas'],],
@@ -49,9 +49,9 @@
                         'url' => '#',
                         'items' => [
                             ['label' => 'Hazard', 'icon' => 'circle-o', 'url' => ['/tanah-longsor'],],
-                            ['label' => 'Kerentanan', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'Kerentanan', 'icon' => 'circle-o', 'url' => ['/kerentanan-longsor'],],
                             ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/skor-indeks'],],
-                            ['label' => 'Nilai Risiko Bencana', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'Nilai Risiko Bencana', 'icon' => 'circle-o', 'url' => ['/nilai-risiko'],],
                         ],
                     ],
                     ['label' => 'AHP', 'icon' => 'calculator', 'url' => ['/']],
