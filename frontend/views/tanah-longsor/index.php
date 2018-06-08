@@ -39,19 +39,21 @@ $this->title = 'PRB | Jawa Timur';
                             <th>Nama Kabupaten</th>
                             <th>Latitude</th>
                             <th>Longtitude</th>
-                            <th>Kerentanan Gerakan Tanah</th>              
+                            <th>Kerentanan Gerakan Tanah</th>
+                            <th>Skor</th>              
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($query as $res) { ?>
+                        <?php $i=0; foreach ($query['data_longsor'] as $res) { ?>
                         <tr>
                             <td><?= $res['tanggal_kejadian'] ?></td>
                             <td><?= $res['nama_kabupaten'] ?></td>
                             <td><?= $res['latitude'] ?></td>
                             <td><?= $res['longtitude'] ?></td>
                             <td><?= $res['kerentanan_gerakan_tanah'] ?></td>
+                            <td><?= $query['skor_longsor'][$i] ?></td>
                         </tr>
-                        <?php } ?>                     
+                        <?php $i++; } ?>                     
                     </tbody>
                     <tfoot>
                         <tr>
@@ -60,6 +62,7 @@ $this->title = 'PRB | Jawa Timur';
                             <th>Latitude</th>
                             <th>Longtitude</th>
                             <th>Kerentanan Gerakan Tanah</th> 
+                            <th>Skor</th>
                         </tr>
                     </tfoot>
                 </table>

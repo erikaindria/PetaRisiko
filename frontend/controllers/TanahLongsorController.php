@@ -36,15 +36,8 @@ class TanahLongsorController extends Controller
      * Lists all TanahLongsor models.
      * @return mixed
      */
-    public function actionIndex()
+    public function longsor()
     {
-        // $dataProvider = new ActiveDataProvider([
-        //     'query' => TanahLongsor::find(),
-        // ]);
-
-        // return $this->render('index', [
-        //     'dataProvider' => $dataProvider,
-        // ]);
 
         $query = (new \yii\db\Query())
         ->select(['bencana.tanggal_kejadian', 'kabupaten.nama_kabupaten', 'tanah_longsor.latitude', 'tanah_longsor.longtitude', 'tanah_longsor.kerentanan_gerakan_tanah']) 
@@ -54,6 +47,27 @@ class TanahLongsorController extends Controller
         
         $command = $query->createCommand(); 
         $data = $command->queryAll();
+
+        return $data;
+    }
+
+    public function actionIndex(){
+        $data['data_longsor'] = $this-> longsor();
+        $dlongsor = $data['data_longsor'];
+
+        for ($i=0; $i < count($dlongsor); $i++) { 
+            if ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Rendah') {
+                $skor_longsor[$i] = 0.333333;
+            }
+            elseif ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Sedang') {
+                $skor_longsor[$i] = 0.666667;
+            }
+            else
+                $skor_longsor[$i] = 1;
+        }
+        $data['dlongsor'] = $dlongsor;
+        $data['skor_longsor'] = $skor_longsor;
+
 
         return $this->render('index', [
             'query' => $data,

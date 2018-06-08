@@ -19,7 +19,6 @@ $this->title = 'PRB | Jawa Timur';
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Process</a></li>
             <li class="active">Kerentanan</li>
-            <li class="active">Kerentanan Proses</li>
         </ol>
     </section>
 

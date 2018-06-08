@@ -39,10 +39,14 @@ $this->title = 'PRB | Jawa Timur';
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $i=0; foreach ($query['data_longsor'] as $res) { ?>
                         <tr>
-                            <td></td>
-                            <td></td>
-                        </tr>                    
+                            <td><?= $res['tanggal_kejadian'] ?></td>
+                            <td><?= $res['nama_kabupaten'] ?></td>
+                            <td><?= $query['nilairisk'][$i]; ?></td>
+                            <td><?= $query['stats'][$i]; ?></td>
+                        </tr>
+                        <?php $i++; } ?>                    
                     </tbody>
                     <tfoot>
                         <tr>

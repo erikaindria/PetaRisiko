@@ -17,7 +17,7 @@ $this->title = 'PRB | Jawa Timur';
             <small></small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Data</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Process</a></li>
             <li class="active">Indeks Kapasitas</li>
         </ol>
     </section>
