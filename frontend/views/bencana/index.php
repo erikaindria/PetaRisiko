@@ -9,6 +9,22 @@ use yii\grid\GridView;
 $this->title = 'PRB | Jawa Timur';
 
 ?>
+
+<!-- DataTables CSS -->
+<head>
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+</head>
+
+
+
+
+
+
+
+
 <div class="bencana-index">
 
     <!-- Content Header (Page header) -->
@@ -62,3 +78,14 @@ $this->title = 'PRB | Jawa Timur';
         </div><!-- /.box -->
     </section>
 </div>
+
+
+<!-- DataTables -->
+<script src="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+ <script type="text/javascript">
+    $(function () {
+        $("#example1").dataTable();
+    });
+</script>
