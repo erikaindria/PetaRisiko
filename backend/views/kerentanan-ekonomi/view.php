@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\KerentananEkonomi */
 
 $this->title = $model->id_kerenek;
-$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Ekonomis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Ekonomi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-ekonomi-view">

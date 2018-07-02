@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Bencana */
 
 $this->title = $model->id_bencana;
-$this->params['breadcrumbs'][] = ['label' => 'Bencanas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Bencana', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bencana-view">

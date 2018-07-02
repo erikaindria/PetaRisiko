@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Bencana */
 
 $this->title = 'Create Bencana';
-$this->params['breadcrumbs'][] = ['label' => 'Bencanas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Bencana', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bencana-create">

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\KerentananFisik */
 
 $this->title = $model->id_kerenfis;
-$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Fisiks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Fisik', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-fisik-view">

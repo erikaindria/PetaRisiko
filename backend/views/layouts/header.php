@@ -7,13 +7,13 @@ use yii\helpers\Html;
 
 <header class="main-header">
 
-    <?= Html::a('<span class="logo-mini">PRB</span><span class="logo-lg">' . 'PETA RISIKO' . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-lg">' . 'PETA RISIKO' . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-static-top" role="navigation">
 
-        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <!-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
-        </a>
+        </a> -->
 
         <div class="navbar-custom-menu">
 

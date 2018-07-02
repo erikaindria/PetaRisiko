@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\AhpTanahLongsor */
 
 $this->title = $model->id_ahp_tanah_longsor;
-$this->params['breadcrumbs'][] = ['label' => 'Ahp Tanah Longsors', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Ahp Tanah Longsor', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ahp-tanah-longsor-view">

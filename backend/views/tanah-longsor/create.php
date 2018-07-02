@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\TanahLongsor */
 
 $this->title = 'Create Tanah Longsor';
-$this->params['breadcrumbs'][] = ['label' => 'Tanah Longsors', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Tanah Longsor', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tanah-longsor-create">

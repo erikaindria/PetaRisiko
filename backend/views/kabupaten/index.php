@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kabupatens';
+$this->title = 'Kabupaten';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kabupaten-index">
@@ -26,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_kerenek',
             'id_kerenfis',
             'id_kerenling',
-            // 'id_kerensos',
-            // 'id_indeks_kapasitas',
-            // 'nama_kabupaten',
-            // 'longtitude',
-            // 'latitude',
+            'id_kerensos',
+            'id_indeks_kapasitas',
+            'nama_kabupaten',
+            'longtitude',
+            'latitude',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

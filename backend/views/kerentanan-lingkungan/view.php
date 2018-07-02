@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\KerentananLingkungan */
 
 $this->title = $model->id_kerenling;
-$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Lingkungans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Kerentanan Lingkungan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kerentanan-lingkungan-view">

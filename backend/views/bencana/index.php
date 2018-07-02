@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bencanas';
+$this->title = 'Bencana';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bencana-index">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_bencana',
             'id_kabupaten',
-            'alamat_kejadian',
+            // 'alamat_kejadian',
             'tanggal_kejadian',
             'waktu_kejadian',
 

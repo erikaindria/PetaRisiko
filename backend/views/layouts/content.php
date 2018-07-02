@@ -35,13 +35,6 @@ use dmstr\widgets\Alert;
     </section>
 </div>
 
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.0
-    </div>
-    <strong>PRB - Peta Risiko Bencana &copy; 2017-2018 <a href="http://almsaeedstudio.com">Erika Indria S.</a>.</strong> All rights
-    reserved.
-</footer>
 
 <!-- Add the sidebar's background. This div must be placed
      immediately after the control sidebar -->
