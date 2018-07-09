@@ -14,7 +14,7 @@ $this->title = 'PRB | Jawa Timur';
 <head>
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.css">
 
 </head>
 
@@ -46,7 +46,7 @@ $this->title = 'PRB | Jawa Timur';
             </div><!-- /.box-header -->
                     
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Nama Kabupaten</th>
@@ -81,11 +81,20 @@ $this->title = 'PRB | Jawa Timur';
 
 
 <!-- DataTables -->
-<script src="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net/js/jquery.dataTables.js"></script>
+<script src="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
 
- <script type="text/javascript">
-    $(function () {
-        $("#example1").dataTable();
+
+<!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
     });
+  });
 </script>

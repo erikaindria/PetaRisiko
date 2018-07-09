@@ -69,6 +69,10 @@ class BencanaController extends Controller
         ]);
     }
 
+    public function actionJson(){
+        
+    }
+
     /**
      * Creates a new Bencana model.
      * If creation is successful, the browser will be redirected to the 'view' page.

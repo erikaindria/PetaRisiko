@@ -55,7 +55,7 @@
                         ],
                     ],
                     ['label' => 'AHP', 'icon' => 'calculator', 'url' => ['/']],
-                    ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/']],
+                    ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/view-geom']],
                 ],
             ]
         ) ?>
