@@ -51,10 +51,10 @@
                             ['label' => 'Hazard', 'icon' => 'circle-o', 'url' => ['/tanah-longsor'],],
                             ['label' => 'Kerentanan', 'icon' => 'circle-o', 'url' => ['/kerentanan-longsor'],],
                             ['label' => 'Indeks Kapasitas', 'icon' => 'circle-o', 'url' => ['/skor-indeks'],],
-                            ['label' => 'Nilai Risiko Bencana', 'icon' => 'circle-o', 'url' => ['/nilai-risiko'],],
+                            ['label' => 'Indeks Method', 'icon' => 'circle-o', 'url' => ['/nilai-risiko'],],
                         ],
                     ],
-                    ['label' => 'AHP', 'icon' => 'calculator', 'url' => ['/']],
+                    ['label' => 'AHP Method', 'icon' => 'calculator', 'url' => ['/']],
                     ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/view-geom']],
                 ],
             ]

@@ -35,12 +35,15 @@ class KerentananFisikController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => KerentananFisik::find(),
-        ]);
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_fisik');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

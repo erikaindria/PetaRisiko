@@ -26,8 +26,8 @@
                         ],
                     ],
                     ['label' => 'Data Indeks Kapasitas', 'icon' => 'book', 'url' => ['/indeks-kapasitas']],
-                    ['label' => 'Data Kejadian', 'icon' => 'book', 'url' => ['/bencana']],
-                    ['label' => 'Data Bencana', 'icon' => 'book', 'url' => ['/tanah-longsor']],
+                    ['label' => 'Data Kejadian Bencana', 'icon' => 'book', 'url' => ['/bencana']],
+                    ['label' => 'Data Tanah Longsor', 'icon' => 'book', 'url' => ['/tanah-longsor']],
                     ['label' => 'Data Bobot AHP', 'icon' => 'book', 'url' => ['/ahp-tanah-longsor']],
                 ],
             ]

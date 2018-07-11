@@ -35,12 +35,15 @@ class KerentananEkonomiController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => KerentananEkonomi::find(),
-        ]);
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_ekonomi');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

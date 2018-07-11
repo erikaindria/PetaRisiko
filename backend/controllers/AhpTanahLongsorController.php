@@ -35,12 +35,15 @@ class AhpTanahLongsorController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => AhpTanahLongsor::find(),
-        ]);
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('ahp_tanah_longsor');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

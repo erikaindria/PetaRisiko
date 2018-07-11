@@ -35,12 +35,15 @@ class KabupatenController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Kabupaten::find(),
-        ]);
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kabupaten');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 

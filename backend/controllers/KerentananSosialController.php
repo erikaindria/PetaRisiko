@@ -35,12 +35,15 @@ class KerentananSosialController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => KerentananSosial::find(),
-        ]);
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_sosial');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'query' => $data,
         ]);
     }
 
