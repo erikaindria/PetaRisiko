@@ -9,6 +9,19 @@ use yii\grid\GridView;
 $this->title = 'PRB | Jawa Timur';
 
 ?>
+
+
+<!-- DataTables CSS -->
+<head>
+  <!-- Bootstrap 3.3.7 -->
+  <link href="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
+
+</head>
+
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/media/js/jquery.js"></script>
+
 <div class="kerentanan-fisik-index">
 
     <!-- Content Header (Page header) -->
@@ -64,3 +77,24 @@ $this->title = 'PRB | Jawa Timur';
     </section>
 
 </div>
+
+
+
+<!-- DataTables -->
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/media/js/jquery.dataTables.min.js"></script>
+
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/dataTables.bootstrap.min.js"></script>
+
+<script src="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js"></script>
+
+<!-- page script -->
+<script>
+  // $(document).ready(function() {
+  //   $('#example1').DataTable({
+  //       responsive : true
+  //   });
+  // }); //bekos ini versi lama
+  jQuery( document ).ready(function( $ ) {
+    $('#example1').DataTable();
+});
+</script>

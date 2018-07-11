@@ -12,18 +12,14 @@ $this->title = 'PRB | Jawa Timur';
 
 <!-- DataTables CSS -->
 <head>
-
+  <!-- Bootstrap 3.3.7 -->
+  <link href="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css">
 
 </head>
 
-
-
-
-
-
-
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/media/js/jquery.js"></script>
 
 <div class="bencana-index">
 
@@ -46,7 +42,7 @@ $this->title = 'PRB | Jawa Timur';
             </div><!-- /.box-header -->
                     
             <div class="box-body">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Nama Kabupaten</th>
@@ -77,24 +73,24 @@ $this->title = 'PRB | Jawa Timur';
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     </section>
-</div>
+</div> 
 
 
 <!-- DataTables -->
-<script src="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net/js/jquery.dataTables.js"></script>
-<script src="../../vendor/almasaeed2010/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/media/js/jquery.dataTables.min.js"></script>
 
+<script src="http://localhost/PetaRisiko/vendor/bower-asset/datatables/dataTables.bootstrap.min.js"></script>
+
+<script src="http://localhost/PetaRisiko/vendor/bower/adminlte/dist/plugins/datatables/extensions/Responsive/js/dataTables.responsive.js"></script>
 
 <!-- page script -->
 <script>
-  $(function () {
-    $('#example1').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
+  // $(document).ready(function() {
+  //   $('#example1').DataTable({
+  //       responsive : true
+  //   });
+  // }); //bekos ini versi lama
+  jQuery( document ).ready(function( $ ) {
+    $('#example1').DataTable();
+});
 </script>
