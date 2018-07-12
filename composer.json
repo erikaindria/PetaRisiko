@@ -18,7 +18,16 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "nullref/yii2-datatables": "^1.0"
+        "nullref/yii2-datatables": "^1.0",
+        "kartik-v/yii2-widget-select2": "@dev",
+        "dmstr/yii2-adminlte-asset" : "~2.5.0",
+        "cebe/yii2-gravatar" : "~1.1",
+        "almasaeed2010/adminlte" : "v2.4.2",
+        "rmrevin/yii2-fontawesome" : "~2.17.1",
+        "fortawesome/font-awesome" : "v4.7.0",
+        "bower-asset/jquery.inputmask" : "~3.3.6",
+        "codeception/specify" : "~0.4.6",
+        "stecman/symfony-console-completion" : "~0.7.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

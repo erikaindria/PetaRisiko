@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\KerentananSosial;
+use backend\models\KerentananSosial;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

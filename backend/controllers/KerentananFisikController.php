@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\KerentananFisik;
+use backend\models\KerentananFisik;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\IndeksKapasitas;
+use backend\models\IndeksKapasitas;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

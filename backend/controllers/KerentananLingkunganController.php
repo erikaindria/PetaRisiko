@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use app\models\KerentananLingkungan;
+use backend\models\KerentananLingkungan;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
