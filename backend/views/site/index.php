@@ -1,5 +1,8 @@
 <?php
 
+use yii\helpers\Html;
+use yii\grid\GridView;
+
 /* @var $this yii\web\View */
 
 $this->title = 'PRB | Jawa Timur';
@@ -30,9 +33,9 @@ $this->title = 'PRB | Jawa Timur';
                                 </div>
                             </div>
                         </div>
-                        <a href="../kabupaten/index.php">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['kabupaten/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -52,9 +55,9 @@ $this->title = 'PRB | Jawa Timur';
                                 </div>
                             </div>
                         </div>
-                        <a href="datadosen.php">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['kerentanan/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -74,9 +77,9 @@ $this->title = 'PRB | Jawa Timur';
                                 </div>
                             </div>
                         </div>
-                        <a href="datadosen.php">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['indeks-kapasitas/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -96,9 +99,9 @@ $this->title = 'PRB | Jawa Timur';
                                 </div>
                             </div>
                         </div>
-                        <a href="datadosen.php">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['bencana/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -118,13 +121,13 @@ $this->title = 'PRB | Jawa Timur';
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="" style="font-size: 160%">Data Bencana</div>
+                                    <div class="" style="font-size: 160%">Data Tanah Longsor</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="datadosen.php">
+                        <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['tanah-longsor/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -146,7 +149,7 @@ $this->title = 'PRB | Jawa Timur';
                         </div>
                         <a href="datadosen.php">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= Html::a('View Details', ['ahp-tanah-longsor/index']); ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>

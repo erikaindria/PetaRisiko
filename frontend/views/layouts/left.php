@@ -54,7 +54,7 @@
                             ['label' => 'Indeks Method', 'icon' => 'circle-o', 'url' => ['/nilai-risiko'],],
                         ],
                     ],
-                    ['label' => 'AHP Method', 'icon' => 'calculator', 'url' => ['/']],
+                    ['label' => 'AHP Method', 'icon' => 'calculator', 'url' => ['/ahp-tanah-longsor']],
                     ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/view-geom']],
                 ],
             ]

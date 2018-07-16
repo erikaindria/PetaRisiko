@@ -1,21 +1,22 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use app\models\TanahLongsor;
+use backend\models\Kabupaten;
+use backend\models\KerentananEkonomi;
+use backend\models\KerentananFisik;
+use backend\models\KerentananLingkungan;
+use backend\models\KerentananSosial;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-use yii\helpers\ArrayHelper;
-use frontend\models\Kabupaten;
-use frontend\models\Bencana;
 /**
- * TanahLongsorController implements the CRUD actions for TanahLongsor model.
+ * KerentananEkonomiController implements the CRUD actions for KerentananEkonomi model.
  */
-class TanahLongsorController extends Controller
+class KerentananController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,17 +34,14 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Lists all TanahLongsor models.
+     * Lists all KerentananEkonomi models.
      * @return mixed
      */
-    public function longsor()
-    {
 
+    public function kerensos(){
         $query = (new \yii\db\Query())
-        ->select(['bencana.tanggal_kejadian', 'kabupaten.nama_kabupaten', 'tanah_longsor.latitude', 'tanah_longsor.longtitude', 'tanah_longsor.kerentanan_gerakan_tanah']) 
-        ->from('bencana')
-        ->join('LEFT JOIN', 'tanah_longsor', 'bencana.id_bencana = tanah_longsor.id_bencana')
-        ->join('LEFT JOIN', 'kabupaten', 'kabupaten.id_kabupaten = bencana.id_kabupaten');
+        ->select ('*')
+        ->from('kerentanan_sosial');
         
         $command = $query->createCommand(); 
         $data = $command->queryAll();
@@ -51,23 +49,53 @@ class TanahLongsorController extends Controller
         return $data;
     }
 
-    public function actionIndex(){
-        $data['data_longsor'] = $this-> longsor();
-        $dlongsor = $data['data_longsor'];
+    public function kerenek(){
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_ekonomi');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
 
-        for ($i=0; $i < count($dlongsor); $i++) { 
-            if ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Rendah') {
-                $skor_longsor[$i] = 0.333333;
-            }
-            elseif ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Sedang') {
-                $skor_longsor[$i] = 0.666667;
-            }
-            else
-                $skor_longsor[$i] = 1;
-        }
-        // $data['dlongsor'] = $dlongsor;
-        $data['skor_longsor'] = $skor_longsor;
+        return $data;
+    }
 
+    public function kerenfis(){
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_fisik');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
+
+        return $data;
+    }
+
+    public function kerenling(){
+        $query = (new \yii\db\Query())
+        ->select ('*')
+        ->from('kerentanan_lingkungan');
+        
+        $command = $query->createCommand(); 
+        $data = $command->queryAll();
+
+        return $data;
+    }
+
+
+    public function actionIndex()
+    {
+        $data['sosial'] = $this->kerensos();
+        $nilaisosial = $data['sosial'];
+
+        $data['ekonomi'] = $this->kerenek();
+        $nilaiekonomi = $data['ekonomi'];
+
+        $data['fisik'] = $this->kerenfis();
+        $nilaifisik = $data['fisik'];
+
+        $data['lingkungan'] = $this->kerenling();
+        $nilailingkungan = $data['lingkungan'];
 
         return $this->render('index', [
             'query' => $data,
@@ -75,7 +103,7 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Displays a single TanahLongsor model.
+     * Displays a single KerentananEkonomi model.
      * @param integer $id
      * @return mixed
      */
@@ -87,16 +115,16 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Creates a new TanahLongsor model.
+     * Creates a new KerentananEkonomi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TanahLongsor();
+        $model = new KerentananEkonomi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_tanah_longsor]);
+            return $this->redirect(['view', 'id' => $model->id_kerenek]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -105,7 +133,7 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Updates an existing TanahLongsor model.
+     * Updates an existing KerentananEkonomi model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -115,7 +143,7 @@ class TanahLongsorController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_tanah_longsor]);
+            return $this->redirect(['view', 'id' => $model->id_kerenek]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -124,7 +152,7 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Deletes an existing TanahLongsor model.
+     * Deletes an existing KerentananEkonomi model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -137,15 +165,15 @@ class TanahLongsorController extends Controller
     }
 
     /**
-     * Finds the TanahLongsor model based on its primary key value.
+     * Finds the KerentananEkonomi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TanahLongsor the loaded model
+     * @return KerentananEkonomi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TanahLongsor::findOne($id)) !== null) {
+        if (($model = KerentananEkonomi::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
