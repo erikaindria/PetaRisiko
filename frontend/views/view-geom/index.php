@@ -1,5 +1,6 @@
 <?php
-
+// var_dump($warna);
+// die();
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -40,9 +41,12 @@ $this->title = 'PRB | Jawa Timur';
         center: {lat: -7.634941, lng: 113.154761},
         mapTypeId: 'terrain'
       });
-
+      var warna = [];
+      <?php foreach ($warna as $val) {?>
+        warna.push('<?php echo $val; ?>');
+      <?php } ?>
+      var i=0;
       data.forEach(function(kab) {
-        console.log(kab);
         if(kab.koordinat != null){
           var tepi = kab.koordinat.replace("POLYGON((","").replace("))","").split(",");
           let batas = [];
@@ -66,9 +70,10 @@ $this->title = 'PRB | Jawa Timur';
             strokeColor: '#000000',
             strokeOpacity: 1,
             strokeWeight: 0.5,
-            fillOpacity: 0.6
+            fillOpacity: 0.6,
+            fillColor: warna[i]
           });
-          // console.log(desa.warna);
+          i++
 
           google.maps.event.addListener(vilagesPoly,'click',function() {
               // console.log(desa.nama_desa);

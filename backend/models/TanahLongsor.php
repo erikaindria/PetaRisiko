@@ -41,8 +41,8 @@ class TanahLongsor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_tanah_longsor' => 'Id Tanah Longsor',
-            'id_bencana' => 'Id Bencana',
+            'id_tanah_longsor' => 'ID Tanah Longsor',
+            'id_bencana' => 'ID Bencana',
             'kerentanan_gerakan_tanah' => 'Kerentanan Gerakan Tanah',
             'longtitude' => 'Longtitude',
             'latitude' => 'Latitude',

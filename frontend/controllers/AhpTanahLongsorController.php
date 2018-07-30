@@ -3,13 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\AhpTanahLongsor;
-use frontend\models\Kabupaten;
-use frontend\models\KerentananEkonomi;
-use frontend\models\KerentananFisik;
-use frontend\models\KerentananLingkungan;
-use frontend\models\KerentananSosial;
-use frontend\models\IndeksKapasitas;
+use frontend\models\AhpTanahLongsor;
+use frontend\models\Kabupaten;;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -35,27 +30,12 @@ class AhpTanahLongsorController extends Controller
         ];
     }
 
-    public function longsor()
-    {
-
-        $query = (new \yii\db\Query())
-        ->select(['bencana.id_kabupaten','bencana.tanggal_kejadian', 'kabupaten.nama_kabupaten', 'tanah_longsor.latitude', 'tanah_longsor.longtitude', 'tanah_longsor.kerentanan_gerakan_tanah']) 
-        ->from('bencana')
-        ->join('LEFT JOIN', 'tanah_longsor', 'bencana.id_bencana = tanah_longsor.id_bencana')
-        ->join('LEFT JOIN', 'kabupaten', 'kabupaten.id_kabupaten = bencana.id_kabupaten');
-        
-        $command = $query->createCommand(); 
-        $data = $command->queryAll();
-
-        return $data;
-    }
-
-    public function kerenek()
+    public function ahp()
     {
         $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'kerentanan_ekonomi.lahan_produktif', 'kerentanan_ekonomi.PDRB']) 
-        ->from('kabupaten')
-        ->join('JOIN', 'kerentanan_ekonomi', 'kabupaten.id_kerenek = kerentanan_ekonomi.id_kerenek');
+        ->select(['kabupaten.nama_kabupaten','ahp_tanah_longsor.bobot']) 
+        ->from('ahp_tanah_longsor')
+        ->join('JOIN', 'kabupaten', 'kabupaten.id_kabupaten = ahp_tanah_longsor.id_kabupaten');
         
         $command = $query->createCommand(); 
         $data = $command->queryAll();
@@ -63,342 +43,28 @@ class AhpTanahLongsorController extends Controller
         return $data;
     }
 
-    public function kerensos(){
-         $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'kerentanan_sosial.kepadatan_penduduk', 'kerentanan_sosial.rasio_jenis_kelamin', 'kerentanan_sosial.rasio_kemiskinan', 'kerentanan_sosial.rasio_orang_cacat', 'kerentanan_sosial.rasio_kelompok_umur']) 
-        ->from('kabupaten')
-        ->join('JOIN', 'kerentanan_sosial', 'kabupaten.id_kerensos = kerentanan_sosial.id_kerensos');
-        
-        $command = $query->createCommand(); 
-        $data = $command->queryAll();
-
-        return $data;
-    }
-
-    public function kerenling(){
-        $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'kerentanan_lingkungan.hutan_lindung', 'kerentanan_lingkungan.hutan_alam', 'kerentanan_lingkungan.hutan_bakau', 'kerentanan_lingkungan.semak_belukar']) 
-        ->from('kabupaten')
-        ->join('JOIN', 'kerentanan_lingkungan', 'kabupaten.id_kerenling = kerentanan_lingkungan.id_kerenling');
-        
-        $command = $query->createCommand(); 
-        $data = $command->queryAll();
-
-        return $data;
-    }
-
-    public function kerenfis(){
-        $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'kerentanan_fisik.fasilitas_umum', 'kerentanan_fisik.fasilitas_kritis', 'kerentanan_fisik.rumah']) 
-        ->from('kabupaten')
-        ->join('JOIN', 'kerentanan_fisik', 'kabupaten.id_kerenfis = kerentanan_fisik.id_kerenfis');
-        
-        $command = $query->createCommand(); 
-        $data = $command->queryAll();
-
-        return $data;
-    }
-
-    public function data_kabupaten(){
-        $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'kabupaten.id_kerenek', 'kabupaten.id_kerenfis', 'kabupaten.id_kerenling', 'kabupaten.id_kerensos', 'kabupaten.id_indeks_kapasitas'])
-        ->from('kabupaten');
-
-        $command = $query->createCommand();
-        $data = $command->queryAll();
-
-        return $data;
-    }
-
-    public function indeks()
-    {
-        $query = (new \yii\db\Query())
-        ->select(['kabupaten.id_kabupaten','kabupaten.nama_kabupaten', 'indeks_kapasitas.skor', 'indeks_kapasitas.id_indeks_kapasitas']) 
-        ->from('kabupaten')
-        ->join('JOIN', 'indeks_kapasitas', 'kabupaten.id_indeks_kapasitas = indeks_kapasitas.id_indeks_kapasitas');
-        
-        $command = $query->createCommand(); 
-        $data = $command->queryAll();
-
-        return $data;
-    }
 
     public function actionIndex()
     {
-        $data['data_kab'] = $this->data_kabupaten();
-        $data_kab = $data['data_kab'];
-        // var_dump($data_kab);die();
+        $data['ahp'] = $this->ahp();
+        $nilaiahp = $data['ahp'];
+        // var_dump($nilaiahp);die();
 
-
-
-        //HAZARD
-        $data['data_longsor'] = $this-> longsor();
-        $dlongsor = $data['data_longsor'];
-
-        for ($i=0; $i < count($dlongsor); $i++) { 
-            if ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Rendah') {
-                $skor_longsor[$i] = 0.333333;
-            }
-            elseif ($dlongsor[$i]['kerentanan_gerakan_tanah'] == 'Sedang') {
-                $skor_longsor[$i] = 0.666667;
-            }
-            else
-                $skor_longsor[$i] = 1;
-        }
-        $data['skor_longsor'] = $skor_longsor;
-
-        // var_dump($dlongsor);die();
-
-
-
-
-        //KERENTANAN SOSIAL
-
-        $data['sosial'] = $this->kerensos();
-        $nilaisosial = $data['sosial'];
-
-        for ($i=0; $i < count($nilaisosial); $i++) { 
-            if ($nilaisosial[$i]['kepadatan_penduduk'] < 500)
-                $skorkepadatan[$i] = $nilaisosial[$i]['kepadatan_penduduk'] / 500;
-            elseif ($nilaisosial[$i]['kepadatan_penduduk'] >= 500 && $nilaisosial[$i]['kepadatan_penduduk'] <= 1000)
-                $skorkepadatan[$i] = $nilaisosial[$i]['kepadatan_penduduk'] / 1000;
-            else
-                $skorkepadatan[$i] = $nilaisosial[$i]['kepadatan_penduduk'] / $nilaisosial[$i]['kepadatan_penduduk'];
+        for ($i=0; $i < count($nilaiahp); $i++) { 
+            $bobot[$i] = $nilaiahp[$i]['bobot'];
         }
 
-        for ($i=0; $i < count($nilaisosial); $i++) { 
-            if ($nilaisosial[$i]['rasio_jenis_kelamin'] < 20)
-                $skorkelamin[$i] = $nilaisosial[$i]['rasio_jenis_kelamin'] / 20;
-            elseif ($nilaisosial[$i]['rasio_jenis_kelamin'] >= 20 && $nilaisosial[$i]['rasio_jenis_kelamin'] <= 40)
-                $skorkelamin[$i] = $nilaisosial[$i]['rasio_jenis_kelamin'] / 40;
-            else
-                $skorkelamin[$i] = $nilaisosial[$i]['rasio_jenis_kelamin'] / $nilaisosial[$i]['rasio_jenis_kelamin'];
-        }
+        $data['bobot'] = $bobot;
 
-        for($i=0;$i <count($nilaisosial);$i++){
-            if ($nilaisosial[$i]['rasio_kemiskinan'] < 20)
-                $skormiskin[$i] = $nilaisosial[$i]['rasio_kemiskinan'] / 20;
-            elseif($nilaisosial[$i]['rasio_kemiskinan'] >= 20 && $nilaisosial[$i]['rasio_kemiskinan'] <= 40)
-                $skormiskin[$i] = $nilaisosial[$i]['rasio_kemiskinan'] / 40;
-            else
-                $skormiskin[$i] = $nilaisosial[$i]['rasio_kemiskinan'] / $nilaisosial[$i]['rasio_kemiskinan'];
-        }
-
-        for($i=0;$i <count($nilaisosial);$i++){
-            if ($nilaisosial[$i]['rasio_orang_cacat'] < 20)
-                $skorcacat[$i] = $nilaisosial[$i]['rasio_orang_cacat'] / 20;
-            elseif($nilaisosial[$i]['rasio_orang_cacat'] >= 20 && $nilaisosial[$i]['rasio_orang_cacat'] <= 40)
-                $skorcacat[$i] = $nilaisosial[$i]['rasio_orang_cacat'] / 40;
-            else
-                $skorcacat[$i] = $nilaisosial[$i]['rasio_orang_cacat'] / $nilaisosial[$i]['rasio_orang_cacat'];
-        }
-
-        for($i=0;$i <count($nilaisosial);$i++){
-            if ($nilaisosial[$i]['rasio_kelompok_umur'] < 20)
-                $skorumur[$i] = $nilaisosial[$i]['rasio_kelompok_umur'] / 20;
-            elseif($nilaisosial[$i]['rasio_kelompok_umur'] >= 20 && $nilaisosial[$i]['rasio_kelompok_umur'] <= 40)
-                $skorumur[$i] = $nilaisosial[$i]['rasio_kelompok_umur'] / 40;
-            else
-                $skorumur[$i] = $nilaisosial[$i]['rasio_kelompok_umur'] / $nilaisosial[$i]['rasio_kelompok_umur'];
-        }
-
-        for ($i=0; $i < count($skorkepadatan); $i++) { 
-            $skorsosial[$i] = (0.6 * (log($skorkepadatan[$i] / 0.01) / log(100 / 0.01))) + (0.1 * $skorkelamin[$i]) + (0.1 * $skorcacat[$i]) + (0.1 * $skormiskin[$i]) + (0.1 * $skorumur[$i]);
-        }
-
-        $data['skorkepadatan'] = $skorkepadatan;
-        $data['skorkelamin'] = $skorkelamin;
-        $data['skormiskin'] = $skormiskin;
-        $data['skorcacat'] = $skorcacat;
-        $data['skorumur'] = $skorumur;
-        $data['skorsosial'] = $skorsosial;
-
-
-
-        //KERENTANAN EKONOMI
-        $data['ekonomi'] = $this->kerenek();
-        $nilaiekonomi = $data['ekonomi'];
-
-        for($i=0; $i < count($nilaiekonomi); $i++){
-            if ($nilaiekonomi[$i]['lahan_produktif'] < 50)
-                $skorlahan[$i] = ($nilaiekonomi[$i]['lahan_produktif'] / 50);
-            elseif ($nilaiekonomi[$i]['lahan_produktif'] >= 50 && $nilaiekonomi[$i]['lahan_produktif'] <= 200)
-                $skorlahan[$i] = ($nilaiekonomi[$i]['lahan_produktif'] / 200);
-            else
-                $skorlahan[$i] = ($nilaiekonomi[$i]['lahan_produktif'] / $nilaiekonomi[$i]['lahan_produktif']);
-        }
-
-        for($i=0; $i < count($nilaiekonomi); $i++){
-            if ($nilaiekonomi[$i]['PDRB'] < 100)
-                $skorPDRB[$i] = ($nilaiekonomi[$i]['PDRB'] / 100);
-            elseif ($nilaiekonomi[$i]['PDRB'] >= 100 && $nilaiekonomi[$i]['PDRB'] <= 300)
-                $skorPDRB[$i] = ($nilaiekonomi[$i]['PDRB'] / 300);
-            else
-                $skorPDRB[$i] = ($nilaiekonomi[$i]['PDRB'] / $nilaiekonomi[$i]['PDRB']);
-        }
-        
-
-        for ($i=0; $i < count($skorPDRB); $i++) { 
-            $skorekonomi[$i] = (0.6 * $skorlahan[$i]) + (0.4 * $skorPDRB[$i]);
-        }
-
-        $data['skorlahan'] = $skorlahan;
-        $data['skorPDRB'] = $skorPDRB;
-        $data['skorekonomi'] = $skorekonomi;
-
-
-        
-
-        //KERENTANAN FISIK
-        $data['fisik'] = $this->kerenfis();
-        $nilaifisik = $data['fisik'];
-
-        for($i=0; $i < count($nilaifisik); $i++){
-            if ($nilaifisik[$i]['fasilitas_umum'] < 500) 
-                $skorumum[$i] = ($nilaifisik[$i]['fasilitas_umum'] / 500);
-            elseif ($nilaifisik[$i]['fasilitas_umum'] >= 500 && $nilaifisik[$i]['fasilitas_umum'] <= 1000)
-                $skorumum[$i] = ($nilaifisik[$i]['fasilitas_umum'] / 1000);
-            else
-                $skorumum[$i] = ($nilaifisik[$i]['fasilitas_umum'] / $nilaifisik[$i]['fasilitas_umum']);
-        }
-
-        for($i=0; $i < count($nilaifisik); $i++){
-            if ($nilaifisik[$i]['fasilitas_kritis'] < 500) 
-                $skorkritis[$i] = ($nilaifisik[$i]['fasilitas_kritis'] / 500);
-            elseif ($nilaifisik[$i]['fasilitas_kritis'] >= 500 && $nilaifisik[$i]['fasilitas_kritis'] <= 1000)
-                $skorkritis[$i] = ($nilaifisik[$i]['fasilitas_kritis'] / 1000);
-            else
-                $skorkritis[$i] = ($nilaifisik[$i]['fasilitas_kritis'] / $nilaifisik[$i]['fasilitas_kritis']);
-        }
-
-        for($i=0; $i < count($nilaifisik); $i++){
-            if ($nilaifisik[$i]['rumah'] < 400) 
-                $skorrumah[$i] = ($nilaifisik[$i]['rumah'] / 400);
-            elseif ($nilaifisik[$i]['rumah'] >= 400 && $nilaifisik[$i]['rumah'] <= 800)
-                $skorrumah[$i] = ($nilaifisik[$i]['rumah'] / 800);
-            else
-                $skorrumah[$i] = ($nilaifisik[$i]['rumah'] / $nilaifisik[$i]['rumah']);
-        }
-
-
-        for ($i=0; $i < count($skorrumah) ; $i++) { 
-            $skorfisik[$i] = (0.4 * $skorrumah[$i]) + (0.3 * $skorumum[$i]) + (0.3 * $skorkritis[$i]);
-        }
-
-        $data['skorrumah'] = $skorrumah;
-        $data['skorumum'] = $skorumum;
-        $data['skorkritis'] = $skorkritis;
-        $data['skorfisik'] = $skorfisik;
-
-        //KERENTANAN LINGKUNGAN
-        $data['lingkungan'] = $this->kerenling();
-        $nilailingkungan = $data['lingkungan'];
-
-        for($i=0; $i < count($nilailingkungan); $i++){
-            if ($nilailingkungan[$i]['hutan_lindung'] < 20)
-                $skorlindung[$i] = $nilailingkungan[$i]['hutan_lindung'] / 20;
-            elseif($nilailingkungan[$i]['hutan_lindung'] >= 20 && $nilailingkungan[$i]['hutan_lindung'] <= 50)
-                $skorlindung[$i] = $nilailingkungan[$i]['hutan_lindung'] / 50;
-            else
-                $skorlindung[$i] = $nilailingkungan[$i]['hutan_lindung'] / $nilailingkungan[$i]['hutan_lindung'];
-        }
-
-        for ($i=0; $i < count($nilailingkungan); $i++) { 
-            if($nilailingkungan[$i]['hutan_alam'] < 25)
-                $skoralam[$i] = $nilailingkungan[$i]['hutan_alam'] / 25;
-            elseif($nilailingkungan[$i]['hutan_alam'] >= 25 && $nilailingkungan[$i]['hutan_alam'] <= 75)
-                $skoralam[$i] = $nilailingkungan[$i]['hutan_alam'] / 75;
-            else
-                $skoralam[$i] = $nilailingkungan[$i]['hutan_alam'] / $nilailingkungan[$i]['hutan_alam'];
-        }
-
-        for ($i=0; $i < count($nilailingkungan); $i++) { 
-            if($nilailingkungan[$i]['hutan_bakau'] < 10)
-                $skorbakau[$i] = $nilailingkungan[$i]['hutan_bakau'] / 10;
-            elseif($nilailingkungan[$i]['hutan_bakau'] >= 10 && $nilailingkungan[$i]['hutan_bakau'] <= 30)
-                $skorbakau[$i] = $nilailingkungan[$i]['hutan_bakau'] / 30;
-            else
-                $skorbakau[$i] = $nilailingkungan[$i]['hutan_bakau'] / $nilailingkungan[$i]['hutan_bakau'];
-        }
-
-        for ($i=0; $i < count($nilailingkungan); $i++) { 
-            if($nilailingkungan[$i]['semak_belukar'] < 10)
-                $skorbelukar[$i] = $nilailingkungan[$i]['semak_belukar'] / 10;
-            elseif($nilailingkungan[$i]['semak_belukar'] >= 10 && $nilailingkungan[$i]['semak_belukar'] <= 30)
-                $skorbelukar[$i] = $nilailingkungan[$i]['semak_belukar'] / 30;
-            else
-                $skorbelukar[$i] = $nilailingkungan[$i]['semak_belukar'] / $nilailingkungan[$i]['semak_belukar'];
-        }
-
-
-        for ($i=0; $i < count($nilailingkungan); $i++) { 
-            $skorlingkungan[$i] = (0.4 * $skorlindung[$i]) + (0.4 * $skoralam[$i]) + (0.1 * $skorbakau[$i]) + (0.1 * $skorbelukar[$i]);
-        }
-
-        $data['skorlindung'] = $skorlindung;
-        $data['skoralam'] = $skoralam;
-        $data['skorbakau'] = $skorbakau;
-        $data['skorbelukar'] = $skorbelukar;
-        $data['skorlingkungan'] = $skorlingkungan;
-
-        for ($i=0; $i < count($skorsosial); $i++) { 
-            $skorkerentanan[$i] = (0.4 * $skorsosial[$i]) + (0.25 * $skorekonomi[$i]) + (0.25 * $skorfisik[$i]) + (0.1 * $skorlingkungan[$i]);
-        }
-
-        $data['skorkerentanan'] = $skorkerentanan;
-        // var_dump($skorkerentanan);die();
-
-
-
-
-        //INDEKS KAPASITAS
-        $data['nilaiindeks'] = $this->indeks();
-        $nilaiindeks = $data['nilaiindeks'];
-
-
-        for($i=0; $i < count($nilaiindeks); $i++){
-            if ($nilaiindeks[$i]['skor'] < 0.33) 
-                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.33);
-            elseif($nilaiindeks[$i]['skor'] >= 0.33 && $nilaiindeks[$i]['skor'] <= 0.66)
-                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.66) *1;
-            else
-                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / $nilaiindeks[$i]['skor']);
-        }   
-        // var_dump($skorindeks);die();
-        $data['skorindeks'] = $skorindeks;
-
-
-
-
-
-        // var_dump($dlongsor);die();
-
-
-
-
-
-
-        //PERHITUNGAN BOBOT AHP
-        for ($i=0; $i < count($dlongsor); $i++) { 
-            $idkab = $dlongsor[$i]['id_kabupaten'];
-            
-
-            $bobotahp[$i] = (0.65 * $skor_longsor[$i]) + (0.22 * $skorkerentanan[$idkab-1]) + (0.13 * $skorindeks[$idkab-1]);
-            // var_dump($bobotahp);die();
-
-            // $bobotahp[$i] = $bobotahp[$i] /10;
-        }
-        $data['bobotahp'] = $bobotahp;
-
-        // var_dump($bobotahp);die();
+        // var_dump($bobot);die();
 
 
 
 
 
         //PENETRALISIR
-        for ($dt=0; $dt < count($bobotahp); $dt++) { 
-            $datatest[$dt] = $bobotahp[$dt] * 10000;
+        for ($dt=0; $dt < count($bobot); $dt++) { 
+            $datatest[$dt] = $bobot[$dt] * 10000;
         }
 
         ///// NATURAL BREAKS /////
@@ -611,10 +277,10 @@ class AhpTanahLongsorController extends Controller
         // $btsa = 3;
         // $btsb = 7;
 
-        for ($ts=0; $ts < count($bobotahp) ; $ts++) { 
-            if ($bobotahp[$ts]*10000 < $batasatas)
+        for ($ts=0; $ts < count($bobot) ; $ts++) { 
+            if ($bobot[$ts]*10000 < $batasatas)
                 $stats[$ts] = "RENDAH";
-            elseif ($bobotahp[$ts]*10000 >= $batasatas && $bobotahp[$ts]*10000 <= $batasbawah)
+            elseif ($bobot[$ts]*10000 >= $batasatas && $bobot[$ts]*10000 <= $batasbawah)
                 $stats[$ts] = "SEDANG";
             else
                 $stats[$ts] = "TINGGI"; 
@@ -622,13 +288,7 @@ class AhpTanahLongsorController extends Controller
 
         $data['stats'] = $stats;
 
-
-
-
-
-
-
-  
+        // var_dump($stats);die();
 
         return $this->render('index', [
             'query' => $data,

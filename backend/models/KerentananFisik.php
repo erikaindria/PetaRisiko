@@ -40,7 +40,7 @@ class KerentananFisik extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_kerenfis' => 'Id Kerenfis',
+            'id_kerenfis' => 'ID Kerenfis',
             'fasilitas_umum' => 'Fasilitas Umum',
             'fasilitas_kritis' => 'Fasilitas Kritis',
             'rumah' => 'Rumah',

@@ -116,6 +116,7 @@ class NilaiRisikoController extends Controller
         $query = (new \yii\db\Query())
         ->select(['bencana.tanggal_kejadian', 'kabupaten.nama_kabupaten', 'tanah_longsor.latitude', 'tanah_longsor.longtitude', 'tanah_longsor.kerentanan_gerakan_tanah']) 
         ->from('bencana')
+        ->orderBy('bencana.id_kabupaten')
         ->join('LEFT JOIN', 'tanah_longsor', 'bencana.id_bencana = tanah_longsor.id_bencana')
         ->join('LEFT JOIN', 'kabupaten', 'kabupaten.id_kabupaten = bencana.id_kabupaten');
         
@@ -141,10 +142,6 @@ class NilaiRisikoController extends Controller
 
     public function actionIndex()
     {
-        //INDEKS KAPASITAS
-        $data['nilaiindeks'] = $this->indeks();
-        $nilaiindeks = $data['nilaiindeks'];
-
         //KERENTANAN SOSIAL
 
         $data['sosial'] = $this->kerensos();
@@ -353,6 +350,22 @@ class NilaiRisikoController extends Controller
         $data['skor_longsor'] = $skor_longsor;
 
 
+        //INDEKS KAPASITAS
+        $data['nilaiindeks'] = $this->indeks();
+        $nilaiindeks = $data['nilaiindeks'];
+
+        //SKOR INDEKS
+        for($i=0; $i < count($nilaiindeks); $i++){
+            if ($nilaiindeks[$i]['skor'] < 0.33) 
+                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.33);
+            elseif($nilaiindeks[$i]['skor'] >= 0.33 && $nilaiindeks[$i]['skor'] <= 0.66)
+                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / 0.66) *1;
+            else
+                $skorindeks[$i] = ($nilaiindeks[$i]['skor'] / $nilaiindeks[$i]['skor']);
+        }
+        $data['skorindeks'] = $skorindeks;
+
+
 
         //TAMPUNG KABUPATEN
         $data['tamp_kab'] = $this->data_bencana();
@@ -361,9 +374,7 @@ class NilaiRisikoController extends Controller
 
         for ($i=0; $i < count($tamp_kab); $i++) { 
             $tampung[$i] = $tamp_kab[$i]['id_kabupaten'];
-
         }
-
         $data['tampung'] = $tampung;
 
 
@@ -375,11 +386,40 @@ class NilaiRisikoController extends Controller
         $data['ratker'] = $ratker;
 
 
-        //MENCARI NILAI RISIKO
 
-        for($i=0 ; $i < count($tampung); $i++){
-            $nilairisk[$i] = ($skor_longsor[$i] * $ratker[$tampung[$i]-1]) / $nilaiindeks[$tampung[$i]-1]['skor']; 
+
+        //MENCARI NILAI RISIKO
+        for ($x=0; $x < count($tampung); $x++) {
+            $arr[] = [
+                'id_kab' => $tampung[$x],
+            ];
         }
+
+        $tempArrId = array();
+        for ($y=0; $y < count($arr); $y++) { 
+            // print_r($arr[$y]);
+            array_push($tempArrId, $arr[$y]['id_kab']);
+        }
+
+        $countIdKab = array_count_values($tempArrId);
+        
+            
+        for ($i=0; $i < count($arr); $i++) { 
+            for ($z=0; $z < count($countIdKab); $z++) {
+                if (($arr[$i]['id_kab']-1) == $z) {
+                    $skorratker = $ratker[$z];
+                    $skorindeks2 = $skorindeks[$z];
+                    break;
+                } 
+                
+            }
+            $skorlongsor = $skor_longsor[$i];
+
+            $nilairisk[$i] = (($skorlongsor * $skorratker) / $skorindeks2);   
+        }
+        // print_r($nilairisk);
+        // echo "<br>";
+        // die();
 
         $data['nilairisk'] = $nilairisk;
 
@@ -611,6 +651,7 @@ class NilaiRisikoController extends Controller
 
         $data['stats'] = $stats;
 
+        // var_dump($stats);die();
 
 
 

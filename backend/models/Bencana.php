@@ -42,8 +42,8 @@ class Bencana extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_bencana' => 'Id Bencana',
-            'id_kabupaten' => 'Id Kabupaten',
+            'id_bencana' => 'ID Bencana',
+            'id_kabupaten' => 'ID Kabupaten',
             'alamat_kejadian' => 'Alamat Kejadian',
             'tanggal_kejadian' => 'Tanggal Kejadian',
             'waktu_kejadian' => 'Waktu Kejadian',

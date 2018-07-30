@@ -59,13 +59,13 @@ class Kabupaten extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_kabupaten' => 'Id Kabupaten',
-            'id_periode' => 'Id Periode',
-            'id_kerenek' => 'Id Kerenek',
-            'id_kerenfis' => 'Id Kerenfis',
-            'id_kerenling' => 'Id Kerenling',
-            'id_kerensos' => 'Id Kerensos',
-            'id_indeks_kapasitas' => 'Id Indeks Kapasitas',
+            'id_kabupaten' => 'ID Kabupaten',
+            'id_periode' => 'ID Periode',
+            'id_kerenek' => 'ID Kerenek',
+            'id_kerenfis' => 'ID Kerenfis',
+            'id_kerenling' => 'ID Kerenling',
+            'id_kerensos' => 'ID Kerensos',
+            'id_indeks_kapasitas' => 'ID Indeks Kapasitas',
             'nama_kabupaten' => 'Nama Kabupaten',
             'longtitude' => 'Longtitude',
             'latitude' => 'Latitude',

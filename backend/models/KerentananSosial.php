@@ -44,7 +44,7 @@ class KerentananSosial extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_kerensos' => 'Id Kerensos',
+            'id_kerensos' => 'ID Kerensos',
             'kepadatan_penduduk' => 'Kepadatan Penduduk',
             'rasio_jenis_kelamin' => 'Rasio Jenis Kelamin',
             'rasio_kemiskinan' => 'Rasio Kemiskinan',

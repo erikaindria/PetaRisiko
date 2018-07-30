@@ -41,7 +41,7 @@ class KerentananEkonomi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_kerenek' => 'Id Kerenek',
+            'id_kerenek' => 'ID Kerenek',
             'lahan_produktif' => 'Lahan Produktif',
             'PDRB' => 'Pdrb',
         ];

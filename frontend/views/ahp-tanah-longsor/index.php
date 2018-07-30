@@ -50,10 +50,10 @@ $this->title = 'PRB | Jawa Timur';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i=0; foreach ($query['data_longsor'] as $res) { ?>
+                        <?php $i=0; foreach ($query['ahp'] as $res) { ?>
                         <tr>
                             <td><?= $res['nama_kabupaten'] ?></td>
-                            <td><?= $query['bobotahp'][$i] ?></td>
+                            <td><?= $query['bobot'][$i] ?></td>
                             <td><?= $query['stats'][$i] ?></td>
                         </tr>
                         <?php $i++; } ?>                    

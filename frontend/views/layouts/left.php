@@ -55,7 +55,16 @@
                         ],
                     ],
                     ['label' => 'AHP Method', 'icon' => 'calculator', 'url' => ['/ahp-tanah-longsor']],
-                    ['label' => 'PRB - Map', 'icon' => 'globe', 'url' => ['/view-geom']],
+                    [
+                        'label' => 'PRB - Map', 
+                        'icon' => 'globe', 
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Indeks Method', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'AHP Method', 'icon' => 'circle-o', 'url' => ['/'],],
+                            ['label' => 'Indeks & AHP', 'icon' => 'circle-o', 'url' => ['/view-geom'],],
+                        ],
+                    ],
                 ],
             ]
         ) ?>

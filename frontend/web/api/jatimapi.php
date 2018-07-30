@@ -6,7 +6,9 @@
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 	$sql = "SELECT nama_kabupaten, AsText(koordinat) as koordinat
-	from geom";
+	from geom WHERE id_kabupaten <> 0
+	ORDER BY id_kabupaten";
+
 	// $sql = "SELECT ST_AsGeoJSON(koordinat) as koordinat from map";
 
 	if(!$conn){
@@ -22,6 +24,7 @@
 	      	array_push($content, array(
 	      		"nama_kab" => $datas['nama_kabupaten'],
 	      		"koordinat" => $datas['koordinat'],
+	      		
 	    	));
 	    }
 

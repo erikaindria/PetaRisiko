@@ -42,7 +42,7 @@ class KerentananLingkungan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_kerenling' => 'Id Kerenling',
+            'id_kerenling' => 'ID Kerenling',
             'hutan_lindung' => 'Hutan Lindung',
             'hutan_alam' => 'Hutan Alam',
             'hutan_bakau' => 'Hutan Bakau',

@@ -39,8 +39,8 @@ class AhpTanahLongsor extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_ahp_tanah_longsor' => 'Id Ahp Tanah Longsor',
-            'id_kabupaten' => 'Id Kabupaten',
+            'id_ahp_tanah_longsor' => 'ID AHP Tanah Longsor',
+            'id_kabupaten' => 'ID Kabupaten',
             'bobot' => 'Bobot',
         ];
     }

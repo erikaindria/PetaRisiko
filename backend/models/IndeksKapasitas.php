@@ -40,7 +40,7 @@ class IndeksKapasitas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_indeks_kapasitas' => 'Id Indeks Kapasitas',
+            'id_indeks_kapasitas' => 'ID Indeks Kapasitas',
             'skor' => 'Skor',
         ];
     }
