@@ -60,9 +60,9 @@
                         'icon' => 'globe', 
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Indeks Method', 'icon' => 'circle-o', 'url' => ['/'],],
-                            ['label' => 'AHP Method', 'icon' => 'circle-o', 'url' => ['/'],],
-                            ['label' => 'Indeks & AHP', 'icon' => 'circle-o', 'url' => ['/view-geom'],],
+                            ['label' => 'Indeks Method', 'icon' => 'circle-o', 'url' => ['/view-geom-indeks'],],
+                            ['label' => 'AHP Method', 'icon' => 'circle-o', 'url' => ['/view-geom-ahp'],],
+                            ['label' => 'Indeks & AHP Method', 'icon' => 'circle-o', 'url' => ['/view-geom'],],
                         ],
                     ],
                 ],

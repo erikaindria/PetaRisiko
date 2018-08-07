@@ -9,11 +9,9 @@ use yii\grid\GridView;
 
 $this->title = 'PRB | Jawa Timur';
 ?>
-
 <head>
-  <h3>Peta Risiko Bencana Tanah Longsor</h3>
+  <h3>Peta Risiko Bencana Menggunakan Metode Indeks</h3>
 </head>
-
 <div id="map" style="height: 500px; width: 100%"></div>
 
 <script>
@@ -100,7 +98,6 @@ $this->title = 'PRB | Jawa Timur';
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDptF_CzjptPxkpETDJUFVMlQGB_y4ptmY&callback=initMap"
 async defer></script>
-
 
 <div class="col-md-12" style="padding-top: 10px; padding-bottom: 10px;">
   <h4>Legend</h4>
